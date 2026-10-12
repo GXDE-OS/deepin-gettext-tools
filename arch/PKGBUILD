@@ -1,0 +1,31 @@
+# Maintainer: CharOfString <root@charofstring.cc>
+pkgname=deepin-gettext-tools-git
+pkgver=1.0.11
+pkgrel=1
+pkgdesc='Gettext helper tools for Deepin/GXDE (ts conversion for desktop and policy files)'
+arch=('any')
+url="https://github.com/GXDE-OS/deepin-gettext-tools"
+license=('GPL-2.0-or-later')
+depends=('gettext' 'python' 'perl' 'perl-config-tiny' 'perl-xml-libxml')
+makedepends=('git')
+# Arch Linux ARM 没有官方的 deepin-gettext-tools ・ Arch Linux ARM has no official deepin-gettext-tools.
+provides=("deepin-gettext-tools=$pkgver")
+conflicts=('deepin-gettext-tools')
+source=()
+sha512sums=()
+
+# 直接使用 PKGBUILD 所在的 git 仓库作为源码 ・ Build from the git checkout this PKGBUILD lives in.
+_srcroot() {
+  git -C "$startdir" rev-parse --show-toplevel
+}
+
+check() {
+  perl "$(_srcroot)/src/desktop_ts_convert.pl" --help >/dev/null
+  python "$(_srcroot)/src/generate_mo.py" --help >/dev/null
+  python "$(_srcroot)/src/update_pot.py" --help >/dev/null
+  python "$(_srcroot)/src/policy_ts_convert.py" --help >/dev/null
+}
+
+package() {
+  make -C "$(_srcroot)" DESTDIR="$pkgdir" install
+}

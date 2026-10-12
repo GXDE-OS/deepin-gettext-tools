@@ -28,8 +28,8 @@ Files: .clog.toml
 Copyright: None
 License: CC0-1.0
 
-# debian rpm archlinux
-Files: debian/* rpm/* archlinux/*
+# debian rpm arch
+Files: debian/* rpm/* arch/*
 Copyright: None
 License: CC0-1.0
 
