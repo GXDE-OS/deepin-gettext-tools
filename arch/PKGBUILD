@@ -1,5 +1,5 @@
 # Maintainer: CharOfString <root@charofstring.cc>
-pkgname=deepin-gettext-tools-git
+pkgname=gxde-deepin-gettext-tools
 pkgver=1.0.11
 pkgrel=1
 pkgdesc='Gettext helper tools for Deepin/GXDE (ts conversion for desktop and policy files)'
@@ -9,8 +9,9 @@ license=('GPL-2.0-or-later')
 depends=('gettext' 'python' 'perl' 'perl-config-tiny' 'perl-xml-libxml')
 makedepends=('git')
 # Arch Linux ARM 没有官方的 deepin-gettext-tools ・ Arch Linux ARM has no official deepin-gettext-tools.
-provides=("deepin-gettext-tools=$pkgver")
-conflicts=('deepin-gettext-tools')
+provides=("deepin-gettext-tools=$pkgver" "deepin-gettext-tools-git=$pkgver")
+conflicts=('deepin-gettext-tools' 'deepin-gettext-tools-git')
+replaces=('deepin-gettext-tools-git')
 source=()
 sha512sums=()
 
